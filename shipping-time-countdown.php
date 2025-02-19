@@ -4,7 +4,7 @@ defined('ABSPATH') || exit;
 
 /**
  * Plugin Name: Shipping Time Countdown
- * Plugin URI: https://www.kukumav.net
+ * Plugin URI: https://github.com/kukumavnet/shipping-time-countdown/blob/main/README.md
  * Description: Adds a countdown timer according to the cargo delivery time. Allows the user to set the delivery time and working days.
  * Version: 1.0
  * Author: Kukumav.Net
