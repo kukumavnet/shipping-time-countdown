@@ -1,0 +1,111 @@
+# English translations for Shipping Time Countdown
+# Translator: Kukumav.Net
+
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+
+msgid "PluginName"
+msgstr "Shipping Time Countdown"
+
+msgid "PluginDescription"
+msgstr "It includes a countdown timer for cargo delivery. It allows users to set delivery time and working days."
+
+msgid "PluginSettings"
+msgstr "Shipping Time Countdown Settings"
+
+msgid "GeneralSettings"
+msgstr "General Settings"
+
+msgid "Hour"
+msgstr "Hour"
+
+msgid "Minute"
+msgstr "Minute"
+
+msgid "SameDayShippingMessage"
+msgstr "Same Day Shipping Message:"
+
+msgid "SameDayShippingMessagePlaceholder"
+msgstr "🕑If you order within <strong><span style="color: #ff9900;">{time}</span></strong>, it will be<strong><span style="text-decoration: underline;"> shipped today!</span></strong>"
+
+
+msgid "TomorrowShippingMessage"
+msgstr "Tomorrow Shipping Message:"
+
+
+msgid "TomorrowShippingMessagePlaceholder"
+msgstr "🕑If you order within <strong><span style="color: #ff9900;">{time}</span></strong>, it will be<strong><span style="text-decoration: underline;"> shipped tomorrow</span></strong>"
+
+
+msgid "OtherDaysShippingMessage"
+msgstr "Other Days Shipping Message:"
+
+
+msgid "OtherDaysShippingMessagePlaceholder"
+msgstr "📦 Estimate will be delivered to the shipment no later <strong><span style="color: #ff9900;">{time}</span></strong> day!"
+
+
+msgid "ShippingDeliveryTime"
+msgstr "Shipping Delivery Time:"
+
+msgid "ShippingDays"
+msgstr "Shipping Days:"
+
+
+msgid "Monday"
+msgstr "Monday"
+
+msgid "Tuesday"
+msgstr "Tuesday"
+
+msgid "Wednesday"
+msgstr "Wednesday"
+
+msgid "Thursday"
+msgstr "Thursday"
+
+msgid "Friday"
+msgstr "Friday"
+
+msgid "Saturday"
+msgstr "Saturday"
+
+msgid "Sunday"
+msgstr "Sunday"
+
+
+
+msgid "ShortcodeUsage"
+msgstr "Shortcode Usage"
+
+msgid "ShortcodeUsageDescription"
+msgstr "To activate this plugin, add the following shortcode to the field you want to use:"
+
+
+msgid "ParametersDescription"
+msgstr "Parameters You Can Use in This Field:"
+
+msgid "DoYouLikeOurPlugin"
+msgstr "Do you like our plugin?"
+
+msgid "IfYouFindOurPluginUseful"
+msgstr "If you find our plugin useful, please support us by leaving a review on WordPress.org"
+
+msgid "ReviewNow"
+msgstr "Review Now"
+
+msgid "RemindMeLater"
+msgstr "Remind Me Later"
+
+msgid "IAlreadyReviewed"
+msgstr "I Already Reviewed"
+
+msgid "SaveSettings"
+msgstr "Save Settings"
+
+msgid "MoreBlogPosts"
+msgstr "More Blog Posts"
+
+

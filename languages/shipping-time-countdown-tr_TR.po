@@ -1,0 +1,109 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2025-02-18 00:03+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+# English translations for Shipping Time Countdown
+# Translator: Kukumav.Net
+msgid "PluginName"
+msgstr "Kargo Geri Sayıcı"
+
+msgid "PluginDescription"
+msgstr "Kargo teslimatı için geri sayım sayacı içerir. Kullanıcıların teslimat süresini ve çalışma günlerini ayarlamasına olanak tanır."
+
+msgid "PluginSettings"
+msgstr "Kargo Geri Sayıcı Ayarları"
+
+msgid "GeneralSettings"
+msgstr "Genel Ayarlar"
+
+msgid "Hour"
+msgstr "Saat"
+
+msgid "Minute"
+msgstr "Dakika"
+
+msgid "SameDayShippingMessage"
+msgstr "Aynı Gün Kargo Mesajı"
+
+msgid "SameDayShippingMessagePlaceholder"
+msgstr "🕑<strong><span style=\"color: #ff9900;\">{time}</span></strong> içinde sipariş verirsen,<strong><span style=\"text-decoration: underline;\">bugün kargoda!</span></strong>"
+
+msgid "TomorrowShippingMessage"
+msgstr "Yarın Kargo Mesajı"
+
+msgid "TomorrowShippingMessagePlaceholder"
+msgstr "🕑<strong><span style=\"color: #ff9900;\">{time}</span></strong> içinde sipariş verirsen, <strong><span style=\"text-decoration: underline;\">yarın</span></strong> kargoda!"
+
+msgid "OtherDaysShippingMessage"
+msgstr "Diğer Günler Kargo Mesajı"
+
+msgid "OtherDaysShippingMessagePlaceholder"
+msgstr "📦 Tahmini teslimat en geç <strong><span style=\"color: #ff9900;\">{time}</span></strong> günü kargoda!"
+
+msgid "ShippingDeliveryTime"
+msgstr "Kargoya verme zamanı:"
+
+msgid "ShippingDays"
+msgstr "Kargoya Verme Günleri"
+
+msgid "Monday"
+msgstr "Pazartesi"
+
+msgid "Tuesday"
+msgstr "Salı"
+
+msgid "Wednesday"
+msgstr "Çarşamba"
+
+msgid "Thursday"
+msgstr "Perşembe"
+
+msgid "Friday"
+msgstr "Cuma"
+
+msgid "Saturday"
+msgstr "Cumartesi"
+
+msgid "Sunday"
+msgstr "Pazar"
+
+msgid "ShortcodeUsage"
+msgstr "Kısa Kod Kullanımı"
+
+msgid "ShortcodeUsageDescription"
+msgstr "Bu eklentiyi etkinleştirmek için kullanmak istediğiniz alana aşağıdaki kısa kodu ekleyin:"
+
+msgid "ParametersDescription"
+msgstr "Kullanabileceğiniz Parametreler"
+
+msgid "DoYouLikeOurPlugin"
+msgstr "Eklentimizi seviyor musunuz?"
+
+msgid "IfYouFindOurPluginUseful"
+msgstr "Eğer eklentimizi faydalı bulduysanız, WordPress.org'da bize bir değerlendirme bırakarak destek olabilirsiniz."
+
+msgid "ReviewNow"
+msgstr "Şimdi Değerlendir"
+
+msgid "RemindMeLater"
+msgstr "Daha Sonra Hatırlat"
+
+msgid "IAlreadyReviewed"
+msgstr "Zaten Değerlendirdim"
+
+msgid "SaveSettings"
+msgstr "Ayarları Kaydet"
+
+msgid "MoreBlogPosts"
+msgstr "Daha Fazla Blog Görüntüle"

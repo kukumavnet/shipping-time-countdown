@@ -1,0 +1,283 @@
+/* CSS Variables */
+:root {
+  --primary-color: #2271b1;
+  --border-radius: 10px;
+  --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --transition-speed: 0.3s;
+  --spacing-unit: 20px;
+}
+
+/* Base Styles */
+.kukumav-admin {
+  max-width: 1400px;
+  margin: var(--spacing-unit) auto;
+  padding: var(--spacing-unit);
+}
+
+/* Grid Layout */
+.settings-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+  margin-top: var(--spacing-unit);
+}
+
+/* Card Components */
+.settings-card {
+  background: #fff;
+  padding: var(--spacing-unit);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+/* Form Elements */
+.modern-form {
+  @extend .settings-card;
+}
+
+.form-table {
+  th {
+    width: 200px;
+    padding: var(--spacing-unit) 10px var(--spacing-unit) 0;
+  }
+  td {
+    padding: 15px 10px;
+  }
+}
+
+/* Review Card */
+.review-card {
+  border-left: 4px solid var(--primary-color);
+
+  .review-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  .button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 782px) {
+  .settings-container {
+    grid-template-columns: 1fr;
+  }
+
+  .form-table {
+    th,
+    td {
+      display: block;
+      width: 100%;
+      padding: 10px 0;
+    }
+  }
+
+  .button {
+    width: 100%;
+    min-height: 44px;
+  }
+}
+
+.working-days-group label {
+  padding: 5px;
+}
+
+.modern-form h2 {
+  font-size: 20px;
+  color: #1d2327;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f1;
+}
+
+.shortcode-display {
+  display: block;
+  background: #f0f0f1;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.button.button-primary.large {
+  padding: 8px 20px;
+  height: auto;
+  font-size: 15px;
+  margin-top: 20px;
+}
+
+input[type='text'],
+input[type='time'] {
+  width: 100%;
+  max-width: 400px;
+  padding: 8px 12px;
+  border-radius: 4px;
+  border: 1px solid #8c8f94;
+}
+
+.wp-editor-wrap {
+  max-width: 800px;
+}
+
+.mt-3 {
+  margin-top: 30px;
+}
+
+.review-now {
+  margin-bottom: 5px;
+}
+
+.already-reviewed,
+.remind-later {
+  color: var(--primary-color);
+  background: transparent;
+  border: 1px solid var(--primary-color);
+}
+
+.already-reviewed:hover,
+.remind-later:hover {
+  background: #f0f0f1;
+}
+
+/* Responsive Layout */
+@media screen and (max-width: 782px) {
+  .working-days-group label {
+    padding: inherit;
+  }
+
+  .kukumav-admin {
+    padding: 10px;
+  }
+
+  .modern-form {
+    padding: 15px;
+  }
+
+  .form-table,
+  .form-table tbody,
+  .form-table tr,
+  .form-table th,
+  .form-table td {
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  .form-table th {
+    padding-bottom: 5px;
+  }
+
+  .form-table td {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .wp-editor-wrap {
+    max-width: 100%;
+  }
+
+  .wp-editor-area {
+    height: 150px;
+  }
+
+  .settings-sidebar .settings-card {
+    margin-bottom: 15px;
+  }
+
+  .working-days-group label {
+    display: block;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f1;
+  }
+
+  .working-days-group label:last-child {
+    border-bottom: none;
+  }
+
+  input[type='time'] {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Tablet Layout */
+@media screen and (min-width: 783px) and (max-width: 1024px) {
+  .settings-container {
+    grid-template-columns: 3fr 2fr;
+  }
+}
+
+/* Improved touch targets for mobile */
+@media (hover: none) {
+  .button,
+  input[type='checkbox'] {
+    min-height: 44px;
+  }
+
+  .working-days-group label {
+    padding: 12px 0;
+  }
+}
+
+.mt-3 {
+  margin-top: 30px;
+}
+
+.plugin-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 15px 0;
+}
+
+.plugin-logo {
+  width: 128px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.plugin-info {
+  flex: 1;
+}
+
+.plugin-info h3 {
+  margin: 0 0 8px 0;
+}
+
+.plugin-info p {
+  margin: 0;
+  color: #666;
+}
+.more-posts-link {
+  text-align: center;
+  margin: 30px 0;
+  padding: 20px 0;
+}
+
+.more-posts-link .button {
+  padding: 12px 24px;
+  height: auto;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.more-posts-link .button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.more-posts-link .dashicons {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
