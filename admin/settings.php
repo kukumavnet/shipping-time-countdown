@@ -1,5 +1,8 @@
 <?php
-// Review kartı fonksiyonunu güncelle
+// Prevent direct access to this file
+defined('ABSPATH') || exit;
+
+// Update review card function
 function render_review_card()
 {
     if (!should_show_review()) {
@@ -51,30 +54,32 @@ function should_show_review()
     return false;
 }
 
+// Add main menu and submenu pages
 function kukumav_menu()
 {
-    // Kukumav.Net ana menüsü
+    // Add main menu
     add_menu_page(
-        'Kukumav.NET', // Menü başlığı
-        'Kukumav', // Menüde görünen isim
-        'manage_options', // Yetki kontrolü
-        'kukumav-net', // Menü slug
-        'kukumav_net_settings_page', // Menüye bağlı bir işlev
-        'dashicons-awards', // Dashicons veya özel ikon
-        2 // Sıra
+        'Kukumav.NET', // Menu title
+        'Kukumav', // Menu name
+        'manage_options', // Capability
+        'kukumav-net', // Menu slug
+        'kukumav_net_settings_page', // Function to display the page
+        'dashicons-awards', // Dashicons or custom icon
+        2 // Position
     );
 
-    // Kargo Ayarları alt menüsü
+    // Add shipping settings submenu
     add_submenu_page(
-        'kukumav-net', // Ana menü slug
-        __('PluginSettings', 'shipping-time-countdown'), // Menüde görünen isim
-        __('PluginName', 'shipping-time-countdown'), // Menüde görünen isim
-        'manage_options', // Yetki kontrolü
-        'shipping-settings', // Alt menü slug
-        'shipping_settings_page' // Gösterilecek sayfa fonksiyonu
+        'kukumav-net', // Parent menu slug
+        __('PluginSettings', 'shipping-time-countdown'), // Menu name
+        __('PluginName', 'shipping-time-countdown'), // Menu name
+        'manage_options', // Capability
+        'shipping-settings', // Submenu slug
+        'shipping_settings_page' // Function to display the page
     );
 }
 add_action('admin_menu', 'kukumav_menu');
+
 function kukumav_net_settings_page()
 {
 
@@ -82,30 +87,30 @@ function kukumav_net_settings_page()
         return;
     }
 
-    // Review kartı gösterme kontrolü
+    // Review card display control
     $install_date = get_option('shipping_install_date');
     $review_status = get_option('shipping_review_status', 'pending');
     $reminder_date = get_option('shipping_review_reminder_date', 0);
     $current_time = time();
     $show_review = false;
 
-    // Review kartını gösterme koşulları
+    // Review card display conditions
     if ($review_status === 'pending' && $install_date && ($current_time - $install_date > 7 * DAY_IN_SECONDS)) {
         $show_review = true;
     } elseif ($review_status === 'postponed' && $current_time > $reminder_date) {
         $show_review = true;
     }
 
-    // Zaten review edilmişse gösterme
+    // Don't show if already reviewed
     if ($review_status === 'reviewed') {
         $show_review = false;
     }
 
-    // WordPress'in kendi stil ve scriptlerini ekleyelim
+    // Enqueue WordPress core styles and scripts
     wp_enqueue_style('shipping-admin-css', plugins_url('/assets/css/admin.css', dirname(__FILE__)));
     wp_enqueue_style('shipping-slider-css', plugins_url('/assets/css/slider.css', dirname(__FILE__)));
 
-    // RSS feed işlemleri
+    // Process RSS feed
     $rss = fetch_feed('https://www.kukumav.net/blog/feed/');
     $maxitems = 0;
     $rss_items = array();
@@ -115,10 +120,10 @@ function kukumav_net_settings_page()
         $rss_items = $rss->get_items(0, $maxitems);
     }
 
-    // Blog grid yapısını mobil için düzenle
+    // Set grid layout for mobile/desktop
     $items_per_slide = wp_is_mobile() ? 1 : 3;
 
-    // Sayfa içeriğini göster
+    // Display page content
 ?>
     <div class="wrap kukumav-admin">
         <div class="settings-card">
@@ -152,7 +157,7 @@ function kukumav_net_settings_page()
                     echo '<div class="blog-grid">';
 
                     foreach ($rss_items as $item) {
-                        // Her sayfada 1 (mobil) veya 3 (desktop) yazı göster
+                        // Show 1 (mobile) or 3 (desktop) posts per page
                         if ($counter > 0 && $counter % $items_per_slide === 0) {
                             echo '</div></div>';
                             $page_counter++;
@@ -160,7 +165,7 @@ function kukumav_net_settings_page()
                             echo '<div class="blog-grid">';
                         }
 
-                        // Blog item içeriği
+                        // Blog item content
                         $thumbnail = '';
                         $content = $item->get_content();
                         $excerpt = wp_trim_words(strip_tags($content), 20, '...');
@@ -206,7 +211,7 @@ function kukumav_net_settings_page()
                 </div>
                 <div class="slide-dots">
                     <?php
-                    // Mobil için nokta sayısını ayarla
+                    // Adjust dot count for mobile
                     $total_pages = ceil($maxitems / (wp_is_mobile() ? 1 : 3));
                     for ($i = 0; $i < $total_pages; $i++) {
                         echo '<button class="dot' . ($i === 0 ? ' active' : '') . '" data-slide="' . $i . '"></button>';
@@ -287,8 +292,10 @@ function shipping_settings_page()
 <?php
 }
 
+// Initialize plugin settings
 function shipping_register_settings()
 {
+    // Register setting groups
     register_setting(
         'shipping_settings_group',
         'shipping_same_day_message',
@@ -318,7 +325,7 @@ function shipping_register_settings()
         array('sanitize_callback' => 'shipping_sanitize_working_days')
     );
 
-    // Ayar alanları
+    // Add settings fields
     add_settings_section('shipping_settings_section', __('GeneralSettings', 'shipping-time-countdown'), null, 'shipping-settings');
 
     add_settings_field(
@@ -363,7 +370,7 @@ function shipping_register_settings()
 }
 add_action('admin_init', 'shipping_register_settings');
 
-// AJAX handler'ı güncelle
+// Handle AJAX review updates
 function handle_shipping_review_ajax()
 {
     check_ajax_referer('shipping_review_nonce', 'nonce');
@@ -371,19 +378,21 @@ function handle_shipping_review_ajax()
     $status = sanitize_text_field($_POST['status']);
     $valid_statuses = ['postponed', 'reviewed'];
 
+    // Validate status
     if (!in_array($status, $valid_statuses)) {
         wp_send_json_error('Invalid status');
         return;
     }
 
+    // Update review status
     if ($status === 'postponed') {
-        // 7 gün sonrası için hatırlatma ayarla
+        // Set reminder for 7 days later
         update_option('shipping_review_status', 'postponed');
         update_option('shipping_review_reminder_date', time() + (7 * DAY_IN_SECONDS));
     } else {
-        // Kalıcı olarak review edildi olarak işaretle
+        // Mark as permanently reviewed
         update_option('shipping_review_status', 'reviewed');
-        delete_option('shipping_review_reminder_date'); // Hatırlatma tarihini temizle
+        delete_option('shipping_review_reminder_date'); // Clear reminder date
     }
 
     wp_send_json_success(['status' => $status]);
@@ -392,7 +401,7 @@ add_action('wp_ajax_update_shipping_review_status', 'handle_shipping_review_ajax
 
 function shipping_add_underline_button($buttons)
 {
-    // Alt çizgi butonunu araç çubuğuna ekliyoruz
+    // Add underline button to the toolbar
     array_push($buttons, 'underline');
     return $buttons;
 }
@@ -469,7 +478,7 @@ function shipping_sanitize_working_days($input)
 }
 
 
-// Plugin aktivasyonunda başlangıç ayarlarını yap
+// Set initial settings on plugin activation
 function shipping_plugin_activation()
 {
     if (!get_option('shipping_install_date')) {
@@ -480,7 +489,7 @@ function shipping_plugin_activation()
 }
 register_activation_hook(__FILE__, 'shipping_plugin_activation');
 
-// JavaScript kodunu güncelle
+// Update JavaScript code
 add_action('admin_footer', 'shipping_review_scripts');
 function shipping_review_scripts()
 {
@@ -520,7 +529,7 @@ function shipping_review_scripts()
 <?php
 }
 
-// Style ve script dosyalarını ekle
+// Load required styles and scripts
 function kukumav_admin_enqueue_scripts()
 {
     wp_enqueue_style('shipping-admin-css', plugins_url('/assets/css/admin.css', dirname(__FILE__)));
@@ -529,7 +538,7 @@ function kukumav_admin_enqueue_scripts()
     wp_enqueue_script('jquery-ui-tabs');
     wp_enqueue_style('wp-jquery-ui-dialog');
 
-    // Nonce'u JavaScript'e aktar
+    // Pass nonce to JavaScript
     wp_localize_script('shipping-admin-js', 'kukumavAdmin', array(
         'nonce' => wp_create_nonce('shipping_review_nonce')
     ));
@@ -541,7 +550,7 @@ function include_settings_page_view()
 {
     if (!current_user_can('manage_options')) return;
 
-    // Blog feed'ini hazırla
+    // Prepare blog feed
     $maxitems = 0;
     $rss_items = array();
     $rss = fetch_feed('https://www.kukumav.net/blog/feed/');
@@ -551,6 +560,6 @@ function include_settings_page_view()
         $rss_items = $rss->get_items(0, $maxitems);
     }
 
-    // Sayfa içeriğini göster
+    // Display page content
     include_once plugin_dir_path(__FILE__) . 'views/settings-page.php';
 }
